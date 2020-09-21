@@ -1,6 +1,7 @@
 (function ($, window, document, undefined) {
 
   'use strict';
+  
 
   $(function () {
     $('input[name=payment]').on('change', function() {
