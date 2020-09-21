@@ -1,6 +1,6 @@
 {# ! No relative paths needed, all files inside templates/ are available ! #}
 
-{# {% set title = 'inline data' %} #}
+{% set cta = 'Ask About Moz Enterprise Plans' %}
 
 
 {% set cardPricingMonthly = [
@@ -87,60 +87,71 @@
 
 {% block main %}
 
-  <section class="container">
-    <div class="row d-flex justify-content-center">
-      <div class="col-12 radio-button-row text-center">
-        <form>
-          <input type="radio" id="monthly" name="payment" value="monthly" checked="checked" />
-          <label for="monthly">Pay Monthly</label>
-          <input type="radio" id="yearly" name="payment" value="yearly" />
-          <label for="yearly">Pay Yearly</label>
-        </form>
-      </div>
-    </div>
-    <div id="monthly-pricing" class="row">
-      {% for card in cardPricingMonthly %}
-      <div class="col-12 col-md-6 col-xl-3 card">
-        <div class="card-body py-3 px-2">
-          <h6 class="text-center">{{ card.title }}</h6>
-          <div class="pricing">
-            <div class="main-price h1 text-center py-3">{{ card.price }} <span class="subtext">/mo</span></div>
-            <div class="disclaimer">
-              <p><em>$79 /mo when you <span>pay yearly</span></em></p>
-            </div>
-          </div>
-          <div class="text text-center pb-5">
-            If you're new to SEO or just need the basics, this plan is a great way to get started.
-          </div>
-          <div class="button-block d-flex flex-column py-2 text-center">
-            <button class="btn-secondary py-2">Sign up now!</button>
-            <a href="" class="tertiary">compare plans</a>
-          </div>
+  <section class="container-fluid py-5">
+    <div class="container">
+      <div class="row d-flex justify-content-center pb-5">
+        <div class="col-12 radio-button-row text-center">
+          <form>
+            <input type="radio" id="monthly" name="payment" value="monthly" checked="checked" />
+            <label for="monthly" class="first">Pay Monthly</label>
+            <input type="radio" id="yearly" name="payment" value="yearly" />
+            <label for="yearly">Pay Yearly</label>
+          </form>
         </div>
       </div>
-      {% endfor %}
-    </div>
-    <div id="yearly-pricing" class="row" style="display:none;">
-      {% for card in cardPricingYearly %}
-      <div class="col-12 col-md-6 col-xl-3 card">
-        <div class="card-body py-3 px-2">
-          <h6 class="text-center">{{ card.title }}</h6>
-          <div class="pricing">
-            <div class="main-price h1 text-center py-3">{{ card.price }} <span class="subtext">/mo</span></div>
-            <div class="disclaimer">
-              <p><em>$79 /mo when you <span>pay yearly</span></em></p>
+      <div id="monthly-pricing" class="row">
+        {% for card in cardPricingMonthly %}
+        <div class="col-12 col-md-6 col-xl-3">
+          <div class="card py-3 px-2">
+            <div class="card-body py-3 px-2">
+              <h6 class="text-center text-uppercase">{{ card.title }}</h6>
+              <div class="pricing">
+                <div class="main-price h1 text-center py-3">{{ card.price }} <span class="subtext">/mo</span></div>
+                <div class="disclaimer">
+                  <p>$79 /mo when you <span>pay yearly</span></p>
+                </div>
+              </div>
+              <div class="text text-center pb-5">
+                If you're new to SEO or just need the basics, this plan is a great way to get started.
+              </div>
+              <div class="button-block d-flex flex-column py-2 text-center">
+                <button class="btn-secondary py-2">Sign up now!</button>
+                <a href="" class="tertiary">compare plans</a>
+              </div>
             </div>
           </div>
-          <div class="text text-center pb-5">
-            If you're new to SEO or just need the basics, this plan is a great way to get started.
-          </div>
-          <div class="button-block d-flex flex-column py-2 text-center">
-            <button class="btn-secondary py-2">Sign up now!</button>
-            <a href="" class="tertiary">compare plans</a>
+        </div>
+        {% endfor %}
+      </div>
+      <div id="yearly-pricing" class="row" style="display:none;">
+        {% for card in cardPricingYearly %}
+        <div class="col-12 col-md-6 col-xl-3">
+          <div class="card py-3 px-2">
+            <div class="card-body py-3 px-2">
+              <h6 class="text-center text-uppercase">{{ card.title }}</h6>
+              <div class="pricing">
+                <div class="main-price h1 text-center py-3">{{ card.price }} <span class="subtext">/mo</span></div>
+                <div class="disclaimer">
+                  <p>$79 /mo when you <span>pay yearly</span></p>
+                </div>
+              </div>
+              <div class="text text-center pb-5">
+                If you're new to SEO or just need the basics, this plan is a great way to get started.
+              </div>
+              <div class="button-block d-flex flex-column py-2 text-center">
+                <button class="btn-secondary py-2">Sign up now!</button>
+                <a href="" class="tertiary">compare plans</a>
+              </div>
+            </div>
           </div>
         </div>
+        {% endfor %}
       </div>
-      {% endfor %}
+      <div class="row text-center pt-5">
+        <div class="col-12">
+          <h3>{{ cta }}</h3>
+        </div>
+      </div>
     </div>
   </section>
 
