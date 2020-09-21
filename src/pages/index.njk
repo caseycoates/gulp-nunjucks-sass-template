@@ -2,12 +2,146 @@
 
 {# {% set title = 'inline data' %} #}
 
+{% set cardPricingMonthly = [
+  {
+    title: "standard",
+    price: "$99",
+    frequency: "/mo",
+    disclaimer: "$79 /mo when you pay yearly",
+    text: "If you're new to SEO or just need the basics, this plan is a great way to get started.",
+    button: "sign me up!",
+    tertiary: "compare plans"
+  },
+  {
+    title: "medium",
+    price: "$149",
+    frequency: "/mo",
+    disclaimer: "$79 /mo when you pay yearly",
+    text: "If you're new to SEO or just need the basics, this plan is a great way to get started.",
+    button: "sign me up!",
+    tertiary: "compare plans"
+  },
+  {
+    title: "large",
+    price: "$249",
+    frequency: "/mo",
+    disclaimer: "$79 /mo when you pay yearly",
+    text: "If you're new to SEO or just need the basics, this plan is a great way to get started.",
+    button: "sign me up!",
+    tertiary: "compare plans"
+  },
+  {
+    title: "premium",
+    price: "$599",
+    frequency: "/mo",
+    disclaimer: "$79 /mo when you pay yearly",
+    text: "If you're new to SEO or just need the basics, this plan is a great way to get started.",
+    button: "sign me up!",
+    tertiary: "compare plans"
+}] %}
+
+{% set cardPricingYearly = [
+  {
+    title: "standard",
+    price: "$79",
+    frequency: "/mo",
+    disclaimer: "$79 /mo when you pay yearly",
+    text: "If you're new to SEO or just need the basics, this plan is a great way to get started.",
+    button: "sign me up!",
+    tertiary: "compare plans"
+  },
+  {
+    title: "medium",
+    price: "$119",
+    frequency: "/mo",
+    disclaimer: "$79 /mo when you pay yearly",
+    text: "If you're new to SEO or just need the basics, this plan is a great way to get started.",
+    button: "sign me up!",
+    tertiary: "compare plans"
+  },
+  {
+    title: "large",
+    price: "$199",
+    frequency: "/mo",
+    disclaimer: "$79 /mo when you pay yearly",
+    text: "If you're new to SEO or just need the basics, this plan is a great way to get started.",
+    button: "sign me up!",
+    tertiary: "compare plans"
+  },
+  {
+    title: "premium",
+    price: "$479",
+    frequency: "/mo",
+    disclaimer: "$79 /mo when you pay yearly",
+    text: "If you're new to SEO or just need the basics, this plan is a great way to get started.",
+    button: "sign me up!",
+    tertiary: "compare plans"
+}] %}
+
+
 {% extends "base.njk" %}
 
 {% block title %}
 {% endblock %}
 
 {% block main %}
+
+  <section class="container">
+    <div class="row d-flex justify-content-center">
+      <div class="col-12 radio-button-row text-center">
+        <form>
+          <input type="radio" id="monthly" name="payment" value="monthly" checked="checked" />
+          <label for="monthly">Pay Monthly</label>
+          <input type="radio" id="yearly" name="payment" value="yearly" />
+          <label for="yearly">Pay Yearly</label>
+        </form>
+      </div>
+    </div>
+    <div id="monthly-pricing" class="row">
+      {% for card in cardPricingMonthly %}
+      <div class="col-12 col-md-6 col-xl-3 card">
+        <div class="card-body py-3 px-2">
+          <h6 class="text-center">{{ card.title }}</h6>
+          <div class="pricing">
+            <div class="main-price h1 text-center py-3">{{ card.price }} <span class="subtext">/mo</span></div>
+            <div class="disclaimer">
+              <p><em>$79 /mo when you <span>pay yearly</span></em></p>
+            </div>
+          </div>
+          <div class="text text-center pb-5">
+            If you're new to SEO or just need the basics, this plan is a great way to get started.
+          </div>
+          <div class="button-block d-flex flex-column py-2 text-center">
+            <button class="btn-secondary py-2">Sign up now!</button>
+            <a href="" class="tertiary">compare plans</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div id="yearly-pricing" class="row" style="display:none;">
+      {% for card in cardPricingYearly %}
+      <div class="col-12 col-md-6 col-xl-3 card">
+        <div class="card-body py-3 px-2">
+          <h6 class="text-center">{{ card.title }}</h6>
+          <div class="pricing">
+            <div class="main-price h1 text-center py-3">{{ card.price }} <span class="subtext">/mo</span></div>
+            <div class="disclaimer">
+              <p><em>$79 /mo when you <span>pay yearly</span></em></p>
+            </div>
+          </div>
+          <div class="text text-center pb-5">
+            If you're new to SEO or just need the basics, this plan is a great way to get started.
+          </div>
+          <div class="button-block d-flex flex-column py-2 text-center">
+            <button class="btn-secondary py-2">Sign up now!</button>
+            <a href="" class="tertiary">compare plans</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
 
 {% endblock %}
 
