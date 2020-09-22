@@ -1,6 +1,10 @@
 {# ! No relative paths needed, all files inside templates/ are available ! #}
 
-{# {% set title = 'inline data' %} #}
+{% set pricingTable = [{title:'standard', price: 79, buttonTxt:'Sign up'}, {title:'medium', price: 119, buttonTxt:'Buy now', trial:true}, {title:'large', price: 119, buttonTxt:'try me'}, {title:'premium', price: 479, buttonTxt:'click me'}] %} 
+{% set buttonTxt = 'Sign up now' %} 
+
+
+
 
 {% extends "base.njk" %}
 
@@ -8,6 +12,50 @@
 {% endblock %}
 
 {% block main %}
+
+
+<input type="radio" class="choose-price" name="price-opt" value="monthly" checked='checked'>
+<label for="monthly">Monthly</label><br>
+<input type="radio" class="choose-price" name="price-opt" value="yearly">
+<label for="yearly">Yearly</label><br>
+
+
+<div class="pricing-table open">
+
+    {% for item in pricingTable %}
+
+            <div class='single-price-table' {% if (item.trial == true) %} id="trial" {% endif %}>
+                {% if (item.trial == true) %} <p>Free Trial</p> {% endif %}
+
+                <h4> {{item.title}} </h4>
+
+                <h2> {{item.price}} </h2>
+
+                <button>{{item.buttonTxt}}</button>
+            </div>
+ 
+    {%- endfor %}   
+
+</div>
+
+<div class="pricing-table-yearly">
+
+{% for item in pricingTable %}
+
+            <div class='single-price-table' {% if (item.trial == true) %} id="trial" {% endif %}>
+                {% if (item.trial == true) %} <p>Free Trial</p> {% endif %}
+
+                <h4> {{item.title}} </h4>
+
+                <h2> {{item.price}} </h2>
+
+                <button>{{item.buttonTxt}}</button>
+            </div>
+ 
+    {%- endfor %}   
+
+
+</div>
 
 {% endblock %}
 

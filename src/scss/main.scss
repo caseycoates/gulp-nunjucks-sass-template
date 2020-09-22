@@ -1,1 +1,32 @@
 @import "../../node_modules/bootstrap/scss/bootstrap";
+
+.pricing-table, 
+.pricing-table-yearly {
+    display: none;
+
+    .single-price-table{
+        border: solid 1px grey;
+        padding: 10px;
+    }
+
+    #trial {
+        border: solid 3px grey;
+    }
+
+    &.open {
+        display: flex;
+        justify-content: space-evenly;
+    }
+}
+
+.pricing-table-yearly{
+    .single-price-table{
+        border: solid 1px red;
+        padding: 10px;
+    }
+}
+
+
+
+
+
