@@ -1,18 +1,32 @@
-.subtext {
-  font-size: 1rem;
+body {
+  font-family: $base-font-family;
 }
 
 section {
   padding: $unit10;
-  background-color: $color-accent-1;
 }
 
-.price-card {
-  background-color: $white;
+svg {
+  display: inline;
+  margin-right: $unit2;
+  -ms-transform: rotate(360deg);
+  -webkit-transform: rotate(360deg);
+  transform: rotate(360deg);
+  @include media-breakpoint-up(md) {
+    display: none;
+  }
+}
+
+.bg-1 {
+  background-color: $color-accent-1;
 }
 
 .first {
   padding-right: 3rem;
+}
+
+.subtext {
+  font-size: 1rem;
 }
 
 .disclaimer {
@@ -20,5 +34,38 @@ section {
   color: $color-accent-2;
   span {
     text-decoration: underline;
+  }
+}
+
+.mobile {
+  height: 0;
+  transition: height .2s ease;
+  .disclaimer,
+  .text,
+  .button-block {
+    display: none;
+  }
+  &.open {
+    height: auto;
+    transition: height .3s ease;
+    .disclaimer,
+    .text,
+    .button-block {
+      display: flex;
+    }
+  }
+  @include media-breakpoint-up(md) {
+    height: auto;
+    .disclaimer,
+    .text,
+    .button-block {
+      display: flex;
+    }
+  }
+}
+
+.accordion-top.rotate {
+  svg {
+    transform: rotate(90deg);
   }
 }
