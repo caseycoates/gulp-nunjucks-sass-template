@@ -5,6 +5,7 @@
 
 {% set cardPricingMonthly = [
   {
+    popular: false,
     title: "standard",
     price: "$99",
     frequency: "/mo",
@@ -14,6 +15,7 @@
     tertiary: "compare plans"
   },
   {
+    popular: true,
     title: "medium",
     price: "$149",
     frequency: "/mo",
@@ -23,6 +25,7 @@
     tertiary: "compare plans"
   },
   {
+    popular: false,
     title: "large",
     price: "$249",
     frequency: "/mo",
@@ -32,6 +35,7 @@
     tertiary: "compare plans"
   },
   {
+    popular: false,
     title: "premium",
     price: "$599",
     frequency: "/mo",
@@ -43,6 +47,7 @@
 
 {% set cardPricingYearly = [
   {
+    popular: false,
     title: "standard",
     price: "$79",
     frequency: "/mo",
@@ -52,6 +57,7 @@
     tertiary: "compare plans"
   },
   {
+    popular: true,
     title: "medium",
     price: "$119",
     frequency: "/mo",
@@ -61,6 +67,7 @@
     tertiary: "compare plans"
   },
   {
+    popular: false,
     title: "large",
     price: "$199",
     frequency: "/mo",
@@ -70,6 +77,7 @@
     tertiary: "compare plans"
   },
   {
+    popular: false,
     title: "premium",
     price: "$479",
     frequency: "/mo",
@@ -89,8 +97,8 @@
 
   <section class="container-fluid py-5 bg-1">
     <div class="container">
-      <div class="row d-flex justify-content-center pb-5">
-        <div class="col-12 radio-button-row text-center">
+      <div class="row d-none d-md-flex justify-content-center pb-5">
+        <div class="col-12 radio-button-row text-center pb-lg-5">
           <form>
             <input type="radio" id="monthly" name="payment" value="monthly" checked="checked" />
             <label for="monthly" class="first">Pay Monthly</label>
@@ -99,30 +107,53 @@
           </form>
         </div>
       </div>
-      <div id="monthly-pricing" class="row">
+      <div id="monthly-pricing" class="row d-lg-flex">
         {% for card in cardPricingMonthly %}
-        <div class="col-12 col-md-6 col-xl-3">
-          <div class="card px-2 mb-3 mb-md-4 py-md-3">
-            <div class="card-body py-3 px-2">
+        <div class="col-12 col-lg-3 align-self-lg-stretch">
+          <div class="card mb-3 mb-lg-4 h-lg-100">
+            {% if card.popular %}
+            <div class="card-body py-3 px-lg-4 popular">
+              {% else %}
+              <div class="card-body p-3 px-lg-4">
+                {% endif %}
               <div class="row flex-row align-middle accordion-top">
-                <div class="col-6 col-md-12 align-self-center text-left text-md-center">
+                <div class="col-6 col-lg-12 align-self-center text-left text-lg-center">
                   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 1200 1200"><path d="M989.368 600.011L810.633 421.275L389.367 0L210.632 178.721l421.267 421.29l-421.267 421.267L389.355 1200l421.266-421.267L989.345 600.01h.023z" fill="#3594BA"/></svg>
-                  <h6 class="text-uppercase d-inline-block d-md-block">{{ card.title }}</h6>
+                  <h6 class="text-uppercase d-inline-block d-lg-block">{{ card.title }}</h6>
                 </div>
-                <div class="col-6 col-md-12 align-self-center text-right text-md-center">
-                  <div class="main-price h1 py-md-3">{{ card.price }} <span class="subtext">/mo</span></div>
+                <div class="col-6 col-lg-12 align-self-center text-right text-lg-center">
+                  <div class="main-price h1 py-lg-3">{{ card.price }} <span class="subtext">/mo</span></div>
                 </div>
               </div>
               <div class="mobile accordion-body">
                 <div class="disclaimer">
-                  <p class="text-center">$79 /mo when you <span>pay yearly</span></p>
+                  <p class="text-center w-100">$79 /mo when you <span>pay yearly</span></p>
                 </div>
-                <div class="text text-center pb-3 pb-md-5">
+                <div class="text text-center pb-3 pb-lg-5">
                   If you're new to SEO or just need the basics, this plan is a great way to get started.
                 </div>
                 <div class="button-block flex-column py-2 text-center">
+                  {% if card.popular %}
+                  <button class="btn-primary py-2">Try it free!</button>
+                  {% else %}
                   <button class="btn-secondary py-2">Sign up now!</button>
-                  <a href="" class="tertiary">compare plans</a>
+                  {% endif %}
+                  <a href="" class="tertiary d-none d-lg-block">compare plans</a>
+                </div>
+                <div class="plan-details py-3">
+                  <div class="row w-100">
+                    <div class="col-12 pt-3 pt-md-5">
+                      <h6 class="w-100 text-center text-uppercase primary">Track and crawl</h6>
+                    </div>
+                    <div class="col-12">
+                      <ul class="pricing-details text-center">
+                        <li>item - would be variable</li>
+                        <li>item - would be variable</li>
+                        <li>item - would be variable</li>
+                        <li>etc</li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -132,23 +163,23 @@
       </div>
       <div id="yearly-pricing" class="row" style="display:none;">
         {% for card in cardPricingYearly %}
-        <div class="col-12 col-md-6 col-xl-3">
-          <div class="card px-2 mb-3 mb-md-4 py-md-3">
+        <div class="col-12 col-lg-3">
+          <div class="card mb-3 mb-lg-4">
             <div class="card-body py-3 px-2">
               <div class="row flex-row align-middle accordion-top">
-                <div class="col-6 col-md-12 align-self-center text-left text-md-center">
+                <div class="col-6 col-lg-12 align-self-center text-left text-lg-center">
                   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 1200 1200"><path d="M989.368 600.011L810.633 421.275L389.367 0L210.632 178.721l421.267 421.29l-421.267 421.267L389.355 1200l421.266-421.267L989.345 600.01h.023z" fill="#3594BA"/></svg>
-                  <h6 class="text-uppercase d-inline-block d-md-block">{{ card.title }}</h6>
+                  <h6 class="text-uppercase d-inline-block d-lg-block">{{ card.title }}</h6>
                 </div>
-                <div class="col-6 col-md-12 align-self-center text-right text-md-center">
-                  <div class="main-price h1 py-md-3">{{ card.price }} <span class="subtext">/mo</span></div>
+                <div class="col-6 col-lg-12 align-self-center text-right text-lg-center">
+                  <div class="main-price h1 py-lg-3">{{ card.price }} <span class="subtext">/mo</span></div>
                 </div>
               </div>
               <div class="mobile accordion-body">
                 <div class="disclaimer">
-                  <p class="text-center">$79 /mo when you <span>pay yearly</span></p>
+                  <p class="text-center w-100">$79 /mo when you <span>pay yearly</span></p>
                 </div>
-                <div class="text text-center pb-3 pb-md-5">
+                <div class="text text-center pb-3 pb-lg-5">
                   If you're new to SEO or just need the basics, this plan is a great way to get started.
                 </div>
                 <div class="button-block flex-column py-2 text-center">
@@ -163,7 +194,7 @@
       </div>
       <div class="row text-center pt-5">
         <div class="col-12">
-          <h3>{{ cta }}</h3>
+          <div class="cta">{{ cta }}</div>
         </div>
       </div>
     </div>
