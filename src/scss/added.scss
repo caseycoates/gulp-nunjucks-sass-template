@@ -25,6 +25,17 @@ svg {
   background-color: $color-accent-1;
 }
 
+.h1 {
+  @include media-breakpoint-down(sm) { // I don't usually use media-breakpoint-down - I would make responsive sizes in my typography file instead. This is a simple option to make sure the layout isn't broken
+    font-size: 2rem;
+  }
+}
+h6 {
+  @include media-breakpoint-down(sm) { // same as above comment
+    font-size: .9rem;
+  }
+}
+
 .btn,
 .btn-primary,
 .btn-secondary {
@@ -120,11 +131,17 @@ svg {
   }
   @include media-breakpoint-up(lg) {
     height: auto;
-    min-height: none;
+    min-height: 0;
     .disclaimer,
     .text,
     .button-block {
       display: flex;
+    }
+    &.open {
+      min-height: 0;
+      .plan-details {
+        display: none;
+      }
     }
   }
 }

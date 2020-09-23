@@ -24,6 +24,9 @@
         $('.accordion-top').removeClass('rotate');
       } else {
         $('.accordion-body').removeClass('open');
+        var scrollTop = $(window).scrollTop() + $(this).offset().top;
+        console.log(scrollTop);
+        $(this).scrollTop(scrollTop); //Typically I would make this conditional so it only loads for smaller screens, or if the window height is greater than the desktop flow
         $(this).siblings('.accordion-body').addClass('open');
         $(this).addClass('rotate');
       }
