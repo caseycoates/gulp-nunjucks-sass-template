@@ -35,14 +35,12 @@ svg {
 
 .btn-secondary {
   background-color: $color-primary;
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: darken($color-primary, 7%);
   }
   &:active {
     background-color: lighten($color-primary, 7%);
-  }
-  &:focus {
-    font-weight: bold;
   }
 }
 
@@ -78,6 +76,17 @@ svg {
     background-color: $black;
     color: $white;
     box-sizing: inherit;
+  }
+  .btn-primary {
+    background-color: $color-secondary;
+    color: $color-accent-3;
+    &:hover,
+    &:focus {
+      background-color: lighten($color-secondary, 5%);
+    }
+    &:active {
+      background-color: lighten($color-secondary, 10%);
+    }
   }
   @include media-breakpoint-up(lg) {
     margin-top: 0;
