@@ -1,6 +1,6 @@
 {# ! No relative paths needed, all files inside templates/ are available ! #}
 
-{# {% set title = 'inline data' %} #}
+{% set items = [{ title: "foo", id: 1 }, { title: "bar", id: 2}] %}
 
 {% extends "base.njk" %}
 
