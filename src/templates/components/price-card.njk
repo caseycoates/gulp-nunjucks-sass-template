@@ -1,0 +1,11 @@
+<article class="price card">
+  <div class="card-body">
+    <div class="price__size text-uppercase">{{ item.size }}</div>
+    <h1 class="price__price">${{ item.price }}<span>/mo</span></h1>
+    <h2 class="price__price_yearly card-subtitle text-muted"><em>{{ item.price_yearly }}<span> /mo when you <a href="#">pay yearly</a></span></em></h2>
+    <p class="price__description card-text">{{ item.description }}</p>
+
+    <a class="card-link" href="{{ item.cta_link }}">{{ item.cta }}</a>
+    <a class="btn {% if item.emphasize %}btn-secondary{% else %}btn-primary{% endif %}" href="#pricing-table">compare plans</a>
+  </div>
+</article>

@@ -1,14 +1,68 @@
 {# ! No relative paths needed, all files inside templates/ are available ! #}
 
-{% set items = [{ title: "foo", id: 1 }, { title: "bar", id: 2}] %}
+{% set items = [{ emphasize: false, size: 'Medium', price: 129, price_yearly: 1220, description: 'hello world', cta_link: '/home', cta: 'Signup now' }, { emphasize: true, size: 'Medium', price: 129, price_yearly: 1220, description: 'hello world', cta_link: '/home', cta: 'Signup now' }, { emphasize: false, size: 'Medium', price: 129, price_yearly: 1220, description: 'hello world', cta_link: '/home', cta: 'Signup now' }, { emphasize: false, size: 'Medium', price: 129, price_yearly: 1220, description: 'hello world', cta_link: '/home', cta: 'Signup now' }] %}
+{% set yearly_items = [{ emphasize: false, size: 'Medium', price: 333, price_yearly: 1220, description: 'hello world', cta_link: '/home', cta: 'Signup now' }, { emphasize: true, size: 'Medium', price: 333, price_yearly: 1220, description: 'hello world', cta_link: '/home', cta: 'Signup now' }, { emphasize: false, size: 'Medium', price: 333, price_yearly: 1220, description: 'hello world', cta_link: '/home', cta: 'Signup now' }, { emphasize: false, size: 'Medium', price: 333, price_yearly: 1220, description: 'hello world', cta_link: '/home', cta: 'Signup now' }] %}
 
 {% extends "base.njk" %}
 
 {% block title %}
+Moz - Moz Pro Pricing
 {% endblock %}
 
 {% block main %}
+<section class="background-ultra-light-gray page-section">
+  <fieldset data-radio-toggle=".radio-controlled" class="radios d-flex justify-content-center">
+    <div class="form-check radio">
+      <input class="form-check-input" type="radio" name="radio-controlled" id="monthlyRadio" value="monthly" checked data-toggle=".monthly">
+      <label class="form-check-label" for="monthlyRadio">
+        Monthly
+      </label>
+    </div>
+    <div class="form-check radio">
+      <input class="form-check-input" type="radio" name="radio-controlled" id="yearlyRadio" value="yearly" data-toggle=".yearly">
+      <label class="form-check-label" for="yearlyRadio">
+        Yearly
+      </label>
+    </div>
+  </fieldset>
+  <div class="container radio-controlled">
+  <div class="pricing row monthly">
+    {% for item in items %}
+    <div class="col-sm {% if item.emphasize %}emphasized{% endif %}">
+      {# <include "components/price-card.nlk" > #}
+      <article class="price card">
+        <div class="card-body">
+          <div class="price__size text-uppercase">{{ item.size }}</div>
+          <h1 class="price__price">${{ item.price }}<span>/mo</span></h1>
+          <h2 class="price__price_yearly card-subtitle text-muted"><em>{{ item.price_yearly }}<span> /mo when you <a href="#">pay yearly</a></span></em></h2>
+          <p class="price__description card-text">{{ item.description }}</p>
 
+          <a class="card-link" href="{{ item.cta_link }}">{{ item.cta }}</a>
+          <a class="btn {% if item.emphasize %}btn-secondary{% else %}btn-primary{% endif %}" href="#pricing-table">compare plans</a>
+        </div>
+      </article>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="pricing row yearly d-none">
+    {% for item in yearly_items %}
+    <div class="col-sm {% if item.emphasize %}emphasized{% endif %}">
+      {# <include "components/price-card.nlk" > #}
+      <article class="price card">
+        <div class="card-body">
+          <div class="price__size text-uppercase">{{ item.size }}</div>
+          <h1 class="price__price">${{ item.price }}<span>/mo</span></h1>
+          <h2 class="price__price_yearly card-subtitle text-muted"><em>{{ item.price_yearly }}<span> /mo when you <a href="#">pay yearly</a></span></em></h2>
+          <p class="price__description card-text">{{ item.description }}</p>
+
+          <a class="card-link" href="{{ item.cta_link }}">{{ item.cta }}</a>
+          <a class="btn {% if item.emphasize %}btn-secondary{% else %}btn-primary{% endif %}" href="#pricing-table">compare plans</a>
+        </div>
+      </article>
+    </div>
+    {% endfor %}
+  </div>
+</section>
 {% endblock %}
 
 {# include other blocks as necessary #}

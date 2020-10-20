@@ -1,1 +1,21 @@
 @import "../../node_modules/bootstrap/scss/bootstrap";
+
+$ultra-light-gray: #F0F7F7;
+
+.background-ultra-light-gray {
+  background-color: $ultra-light-gray
+}
+
+.page-section {
+  padding-top: 3.5rem;
+}
+
+.radio {
+  padding: 2rem;
+}
+
+.price {
+  // > * {
+    text-align: center;
+  // }
+}
